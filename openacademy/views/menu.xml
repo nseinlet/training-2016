@@ -5,8 +5,19 @@
             <field name="res_model">openacademy.course</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <record model="ir.actions.act_window" id="action_list_session">
+            <field name="name">Sessions</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
         <menuitem id="menu_openacademy_root" name="Open Academy" sequence="20"/>
-        <menuitem id="menu_course" parent="menu_openacademy_root" name="Courses" sequence="10"
+        <menuitem id="openacademy_menu" parent="menu_openacademy_root" name="Open Academy" sequence="10"/>
+        <menuitem id="menu_course" parent="openacademy_menu" name="Courses" sequence="10"
                   action="action_list_course"/>
+        <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" sequence="20"
+                  action="action_list_session"/>
     </data>
 </odoo>
