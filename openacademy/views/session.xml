@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="Session List">
                     <field name="name"/>
+                    <field name="instructor_id"/>
                     <field name="start_date"/>
                     <field name="duration"/>
                     <field name="seats"/>
@@ -25,6 +26,7 @@
                             <group col="2">
                                 <field name="name"/>
                                 <field name="course_id"/>
+                                <field name="instructor_id"/>
                             </group>
                             <group col="2">
                                 <field name="start_date"/>
@@ -32,6 +34,11 @@
                                 <field name="seats"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page name="attendees" string="Attendees">
+                                <field name="attendee_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
