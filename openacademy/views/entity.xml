@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <!-- Tree -->
+        <record model="ir.ui.view" id="entity_view_tree">
+            <field name="name">Entity tree view</field>
+            <field name="model">openacademy.entity</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree name="Entity list">
+                    <field name="parent_id"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form -->
+        <record model="ir.ui.view" id="entity_view_form">
+            <field name="name">Entity form view</field>
+            <field name="model">openacademy.entity</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree name="Entity form">
+                    <field name="parent_id"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+</data>
+</odoo>

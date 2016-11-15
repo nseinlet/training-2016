@@ -10,7 +10,7 @@
                     <field name="instructor_id"/>
                     <field name="start_date"/>
                     <field name="duration"/>
-                    <field name="seats"/>
+                    <field name="taken_seats" widget="progressbar"/>
                 </tree>
             </field>
         </record>
@@ -26,17 +26,22 @@
                             <group col="2">
                                 <field name="name"/>
                                 <field name="course_id"/>
+                                <field name="course_entity_id" invisible="1"/>
+                                <field name="entity_id" domain="[('id', 'child_of', course_entity_id)]"/>
                                 <field name="instructor_id"/>
+                                <field name="instructor_name" readonly="1"/>
+                                <field name="active"/>
                             </group>
                             <group col="2">
                                 <field name="start_date"/>
                                 <field name="duration"/>
                                 <field name="seats"/>
+                                <field name="taken_seats" widget="progressbar"/>
                             </group>
                         </group>
                         <notebook>
                             <page name="attendees" string="Attendees">
-                                <field name="attendee_ids"/>
+                                <field name="attendee_ids" widget="many2many_kanban"/>
                             </page>
                         </notebook>
                     </sheet>

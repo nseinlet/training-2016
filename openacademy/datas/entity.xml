@@ -1,0 +1,30 @@
+<odoo>
+    <data noupdate="1">
+        <record model="openacademy.entity" id="entity1">
+            <field name="name">Entity - 1</field>
+        </record>
+        <record model="openacademy.entity" id="entity2">
+            <field name="name">Entity - 2</field>
+        </record>
+        <record model="openacademy.entity" id="entity11">
+            <field name="name">SubEntity 1</field>
+            <field name="parent_id" ref="openacademy.entity1"/>
+        </record>
+        <record model="openacademy.entity" id="entity12">
+            <field name="name">SubEntity 2</field>
+            <field name="parent_id" ref="openacademy.entity1"/>
+        </record>
+        <record model="openacademy.entity" id="entity111">
+            <field name="name">SubSubEntity 1</field>
+            <field name="parent_id" ref="openacademy.entity11"/>
+        </record>
+        <record model="openacademy.entity" id="entity112">
+            <field name="name">SubSubEntity 2</field>
+            <field name="parent_id" ref="openacademy.entity11"/>
+        </record>
+        <record model="openacademy.entity" id="entity113">
+            <field name="name">SubSubEntity 3</field>
+            <field name="parent_id" ref="openacademy.entity11"/>
+        </record>
+    </data>
+</odoo>

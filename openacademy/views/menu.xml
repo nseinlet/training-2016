@@ -11,10 +11,21 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <record model="ir.actions.act_window" id="action_list_entity">
+            <field name="name">Entities</field>
+            <field name="res_model">openacademy.entity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
         <record model="ir.actions.act_window" id="action_list_people">
             <field name="name">Attendees</field>
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="contact_cat_list_action">
+            <field name="name">Contact Tags</field>
+            <field name="res_model">res.partner.category</field>
             <field name="view_mode">tree,form</field>
         </record>
         
@@ -24,8 +35,13 @@
                   action="action_list_course"/>
         <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" sequence="20"
                   action="action_list_session"/>
+        <menuitem id="entity_menu" name="Entities" parent="openacademy_menu" sequence="30"
+                  action="action_list_entity"/>
         <menuitem id="openacademy_menu_people" parent="menu_openacademy_root" name="People" sequence="15"/>
         <menuitem id="menu_people_attendees" parent="openacademy_menu_people" name="Attendees" sequence="10"
                   action="action_list_people"/>
+        <menuitem id="contact_cat_menu" name="Contact Tags"
+                parent="openacademy_menu_people"
+                action="contact_cat_list_action"/>
     </data>
 </odoo>

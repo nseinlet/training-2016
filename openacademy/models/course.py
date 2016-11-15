@@ -8,4 +8,4 @@ class Course(models.Model):
     description = fields.Text()
     responsible_id = fields.Many2one('res.users', string='Responsible')
     session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
-    
+    entity_id = fields.Many2one('openacademy.entity', string='Entity')
