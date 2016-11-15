@@ -7,8 +7,7 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree name="Entity list">
-                    <field name="parent_id"/>
-                    <field name="name"/>
+                    <field name="full_name"/>
                 </tree>
             </field>
         </record>
@@ -19,10 +18,13 @@
             <field name="model">openacademy.entity</field>
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
-                <tree name="Entity form">
+                <form name="Entity form">
+                    <div class="oe_title">
+                        <h1><field name="full_name" /></h1>
+                    </div>
                     <field name="parent_id"/>
                     <field name="name"/>
-                </tree>
+                </form>
             </field>
         </record>
 
