@@ -1,0 +1,59 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="openacademy_subject.list">
+      <field name="name">openacademy_subject list</field>
+      <field name="model">openacademy.subject</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="openacademy_subject.form">
+      <field name="name">openacademy_subject form</field>
+      <field name="model">openacademy.subject</field>
+      <field name="arch" type="xml">
+        <form>
+            <field name="name"/>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="openacademy_subject.course_form">
+      <field name="name">openacademy_subject course form</field>
+      <field name="model">openacademy.course</field>
+      <field name="inherit_id" ref="openacademy.course_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='entity_id']" position="after">
+            <field name="subject_id"/>
+            <field name="available"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="openacademy_subject.session_form">
+      <field name="name">openacademy_subject session form</field>
+      <field name="model">openacademy.session</field>
+      <field name="inherit_id" ref="openacademy.session_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='entity_id']" position="after">
+            <field name="subject_id"/>
+            <field name="course_available"/>
+        </xpath>
+      </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="openacademy_subject.action_window">
+      <field name="name">openacademy_subject window</field>
+      <field name="res_model">openacademy.subject</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Subjects" id="openacademy_subject.subjects" parent="openacademy.openacademy_menu"
+              action="openacademy_subject.action_window"/>
+
+  </data>
+</openerp>

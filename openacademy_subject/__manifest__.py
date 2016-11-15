@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "openacademy",
+    'name': "openacademy_subject",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,18 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['mail'],
+    'depends': ['openacademy'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/course.xml',
-        'views/session.xml',
-        'views/partner.xml',
-        'views/entity.xml',
-        'views/menu.xml',
-        'datas/category.xml',
-        'datas/entity.xml',
+        'views/views.xml',
+        'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

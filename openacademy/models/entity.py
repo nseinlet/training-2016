@@ -3,9 +3,10 @@ from odoo import models, fields, api
 
 class Entity(models.Model):
     _name = 'openacademy.entity'
+    _inherit = 'mail.thread'
     _rec_name = 'full_name'
     
-    name = fields.Char(required=True)
+    name = fields.Char(required=True, track_visibility='on_change')
     full_name = fields.Char(compute='_compute_full_name')
     parent_id = fields.Many2one('openacademy.entity', ondelete='restrict')
     parent_left = fields.Integer(index=True)
