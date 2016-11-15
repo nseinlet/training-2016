@@ -11,7 +11,12 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-        
+        <record model="ir.actions.act_window" id="action_list_people">
+            <field name="name">Attendees</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
         
         <menuitem id="menu_openacademy_root" name="Open Academy" sequence="20"/>
         <menuitem id="openacademy_menu" parent="menu_openacademy_root" name="Open Academy" sequence="10"/>
@@ -19,5 +24,8 @@
                   action="action_list_course"/>
         <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" sequence="20"
                   action="action_list_session"/>
+        <menuitem id="openacademy_menu_people" parent="menu_openacademy_root" name="People" sequence="15"/>
+        <menuitem id="menu_people_attendees" parent="openacademy_menu_people" name="Attendees" sequence="10"
+                  action="action_list_people"/>
     </data>
 </odoo>

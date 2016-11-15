@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="mypartnerview">
+            <field name="name">New partner view</field>
+            <field name="model">res.partner</field> 
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lang']" position="after">
+                    <field name="instructor"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']" position="after">
+                    <page string="Attending sessions">
+                        <field name="session_ids"/>
+                    </page>
+                    <page string="Teaching sessions" attrs="{'invisible': [('instructor', '=', False), ]}">
+                        <field name="instructing_session_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
