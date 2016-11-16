@@ -24,4 +24,23 @@ class Session(models.Model):
                 r.taken_seats = 0.0
             else:
                 r.taken_seats = 100.0 * len(r.attendee_ids) / r.seats
+                
+    # onchange handler
+    @api.onchange('seats', 'attendee_ids')
+    def _onchange_seats(self):
+        if self.seats < 0:
+            # Can optionally return a warning and domains
+            return {
+                'warning': {
+                    'title': "No negative seats",
+                    'message': "The seats number must be a positive number",
+                }
+            }
+        elif self.seats < len(self.attendee_ids):
+            return {
+                'warning': {
+                    'title': "Not enough seats",
+                    'message': "Too much attendees for the number of seats",
+                }
+            }
     
