@@ -9,7 +9,15 @@
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar,gantt</field>
+            <field name="context" eval="{'search_default_my_course_sessions': 1}"/>
+        </record>
+        <record model="ir.actions.act_window" id="action_list_my_session">
+            <field name="name">Sessions</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,gantt</field>
+            <field name="domain" eval="[('course_id.responsible_id.id', '=', 1)]"></field>
         </record>
         <record model="ir.actions.act_window" id="action_list_entity">
             <field name="name">Entities</field>
@@ -35,6 +43,8 @@
                   action="action_list_course"/>
         <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" sequence="20"
                   action="action_list_session"/>
+        <menuitem id="mysession_menu" name="My sessions" parent="openacademy_menu" sequence="25"
+                  action="action_list_my_session"/>
         <menuitem id="entity_menu" name="Entities" parent="openacademy_menu" sequence="30"
                   action="action_list_entity"/>
         <menuitem id="openacademy_menu_people" parent="menu_openacademy_root" name="People" sequence="15"/>

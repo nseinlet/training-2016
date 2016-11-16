@@ -58,7 +58,8 @@
                                             <field name="start_date"/>
                                         </group>
                                     </form>
-                                    <tree>
+                                    <tree decoration-info="taken_seats&lt;40" decoration-danger="taken_seats&gt;80" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
                                         <field name="name"/>
                                         <field name="instructor_id"/>
                                         <field name="taken_seats"/>
