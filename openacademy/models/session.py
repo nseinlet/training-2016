@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
-from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from openerp import models, fields, api
+from openerp.exceptions import ValidationError
 
 class Session(models.Model):
     _name = 'openacademy.session'

@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['mail'],
+    'depends': ['mail', 'web_gantt'],
 
     # always loaded
     'data': [
@@ -30,6 +30,7 @@
         'views/partner.xml',
         'views/entity.xml',
         'views/menu.xml',
+        'views/assets.xml',
         'datas/category.xml',
         'datas/entity.xml',
     ],
