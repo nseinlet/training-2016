@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 class Session(models.Model):
@@ -72,7 +72,7 @@ class Session(models.Model):
     def _check_not_teaching_himself(self):
         for record in self:
             if record.instructor_id and record.instructor_id.id in record.attendee_ids.ids:
-                raise ValidationError("Instructor cannot teach himself")
+                raise ValidationError(_("Instructor cannot teach himself"))
                 
     @api.depends('start_date', 'duration')
     def _get_end_date(self):

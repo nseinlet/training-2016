@@ -21,7 +21,37 @@ class WizardMulti(models.TransientModel):
         
     session_ids = fields.Many2many('openacademy.session', string="Session", required=True, default=_default_session)
     attendee_ids = fields.Many2many('res.partner', string="Attendees")
-
+    state = fields.Selection([('1', 'step 1'), ('2', 'step 2')], default='1')
+    monchamp1 = fields.Char()
+    monchamp2 = fields.Char()
+    monchamp3 = fields.Char()
+    
+    @api.multi
+    def _to_step(self, step):
+        self.write({
+            state: step,
+            'monchamp1': 'a'
+            'monchamp2': 'b'
+            'monchamp3': 'c'
+        })
+        
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Register attendees',
+            'res_model': 'openacademy.wizard.multi',
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'new',
+        }
+        
+    @api.multi
+    def to_step1(self):
+        return self._to_step('1')
+        
+    @api.multi
+    def to_step2(self):
+        return self._to_step('2')
+        
     @api.multi
     def subscribe(self):
         for session in self.session_ids:
