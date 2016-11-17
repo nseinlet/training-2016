@@ -20,10 +20,29 @@ class Session(models.Model):
     active = fields.Boolean(default=True)
     attendee_ids = fields.Many2many('res.partner', 'attendees_m2m_link', 'session_id', 'partner_id')
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
+    attendees_count = fields.Integer(string="Attendees count", compute='_get_attendees_count', store=True)
     entity_id = fields.Many2one('openacademy.entity', string='Entity')
     course_entity_id = fields.Many2one('openacademy.entity', string='Course entity', related="course_id.entity_id", store=True)
     sequence = fields.Integer('Order')
-    
+    color = fields.Integer()
+    state = fields.Selection([
+        ('draft', "Draft"),
+        ('confirmed', "Confirmed"),
+        ('done', "Done"),
+    ], default='draft')
+
+    @api.multi
+    def action_draft(self):
+        self.state = 'draft'
+
+    @api.multi
+    def action_confirm(self):
+        self.state = 'confirmed'
+
+    @api.multi
+    def action_done(self):
+        self.state = 'done'
+
     @api.depends('seats', 'attendee_ids')
     def _taken_seats(self):
         for r in self:
@@ -87,6 +106,25 @@ class Session(models.Model):
     def _set_hours(self):
         for r in self:
             r.duration = r.hours / 24
+            
+    @api.depends('attendee_ids')
+    def _get_attendees_count(self):
+        for r in self:
+            r.attendees_count = len(r.attendee_ids)
+            
+    @api.multi
+    def launch_wizard(self):
+        my_wiz = self.env['openacademy.wizard'].create(
+            {'session_id': self.id}
+        )
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Register attendees',
+            'res_model': 'openacademy.wizard',
+            'res_id': my_wiz.id,
+            'view_mode': 'form',
+            'target': 'new',
+        }
     
 
     
