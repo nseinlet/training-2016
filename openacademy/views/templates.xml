@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <template id="index">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h1>Hello world</h1>
+                        <ul t-foreach="courses" t-as="course">
+                            <li><span t-esc="course.name"/>
+                                <ul t-foreach="course.session_ids" t-as="sess">
+                                    <li><a t-attf-href="/session/{{ slug(sess) }}/" t-esc="sess.name"/></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>    
+            </t>
+        </template>
+        
+        <template id="session">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h1>The session</h1>
+                            <h3 t-field="session.name"/>
+                            
+                            <div t-field="session.seats"/>
+                            <div t-field="session.web_description"/>
+                            
+                        <br/>
+                        <a href="/openacademy/openacademy/">Back to list</a>
+                    </div>
+                </div>    
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -30,9 +30,9 @@ class WizardMulti(models.TransientModel):
     def _to_step(self, step):
         self.write({
             state: step,
-            'monchamp1': 'a'
-            'monchamp2': 'b'
-            'monchamp3': 'c'
+            'monchamp1': 'a',
+            'monchamp2': 'b',
+            'monchamp3': 'c',
         })
         
         return {

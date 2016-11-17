@@ -30,6 +30,7 @@ class Session(models.Model):
         ('confirmed', "Confirmed"),
         ('done', "Done"),
     ], default='draft')
+    web_description = fields.Html('Description for website')
 
     @api.multi
     def action_draft(self):
