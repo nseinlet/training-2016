@@ -34,6 +34,8 @@
         'views/menu.xml',
         'views/wizard.xml',
         'views/templates.xml',
+        'views/sessionanalysis.xml',
+        'views/reports.xml',
         'datas/category.xml',
         'datas/entity.xml',
         'datas/session_workflow.xml',

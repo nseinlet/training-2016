@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <!-- Graph -->
+        <record model="ir.ui.view" id="openacademy_sessionanalysis_graph_view">
+            <field name="name">openacademy.sessionanalysis.graph</field>
+            <field name="model">openacademy.session.analysis</field>
+            <field name="arch" type="xml">
+                <graph string="Participations by Courses">
+                    <field name="course_id"/>
+                </graph>
+            </field>
+        </record>
+        
+        <!-- Pivot -->
+        <record model="ir.ui.view" id="openacademy_sessionanalysis_pivot_view">
+            <field name="name">openacademy.session.pivot</field>
+            <field name="model">openacademy.session.analysis</field>
+            <field name="arch" type="xml">
+                <pivot string="Participations by Courses">
+                    <field name="course_id"/>
+                    <field name="country_id" type="col"/>
+                    <field name="seats" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+    </data>
+</odoo>

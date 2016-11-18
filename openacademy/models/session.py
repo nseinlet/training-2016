@@ -42,7 +42,7 @@ class Session(models.Model):
 
     @api.multi
     def action_done(self):
-        self.state = 'done'
+        self.sudo().state = 'done'
 
     @api.depends('seats', 'attendee_ids')
     def _taken_seats(self):

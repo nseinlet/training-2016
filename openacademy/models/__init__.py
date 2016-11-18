@@ -5,3 +5,4 @@ from . import session
 from . import partner
 from . import entity
 from . import wizard
+import sessionanalysis

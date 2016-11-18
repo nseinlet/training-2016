@@ -36,6 +36,11 @@
             <field name="res_model">res.partner.category</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <record model="ir.actions.act_window" id="action_report_session">
+            <field name="name">Sessions analysis</field>
+            <field name="res_model">openacademy.session.analysis</field>
+            <field name="view_mode">graph,pivot</field>
+        </record>
         
         <menuitem id="menu_openacademy_root" name="Open Academy" sequence="20"/>
         <menuitem id="openacademy_menu" parent="menu_openacademy_root" name="Open Academy" sequence="10"/>
@@ -53,5 +58,8 @@
         <menuitem id="contact_cat_menu" name="Contact Tags"
                 parent="openacademy_menu_people"
                 action="contact_cat_list_action"/>
+        <menuitem id="openacademy_menu_reporting" parent="menu_openacademy_root" name="Reporting" sequence="15"/>
+        <menuitem id="menu_report_session" parent="openacademy_menu_reporting" name="Sessions" sequence="10"
+            action="action_report_session"/>
     </data>
 </odoo>
